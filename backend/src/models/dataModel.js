@@ -1,10 +1,8 @@
-import mongoose from 'mongoos'
-
+import mongoose from 'mongoose';
 
 const DataSchema = new mongoose.Schema({
   name: String,
   value: Number,
 });
 
-const Data = mongoose.model('Data', DataSchema);
-module.exports = Data;
+export default mongoose.model('Data', DataSchema);
