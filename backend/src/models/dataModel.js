@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoos'
 
 
 const DataSchema = new mongoose.Schema({
