@@ -54,6 +54,33 @@ app.post('/api/data', async (req, res) => {
   }
 });
 
+app.delete('/api/data/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const data = await Data.findOneAndDelete({ _id: id });
+
+    res.status(200).json(data);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.put('/api/data/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { name, value } = req.body;
+    const data = await Data.findOneAndUpdate({ _id: id }, { name, value }, { new: true });
+
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ ok: true });

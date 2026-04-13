@@ -54,6 +54,41 @@ export default function App() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`${API_URL}/api/data/${id}`, {
+        method: 'DELETE'
+      });
+
+      fetchData(); // refresh list
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleUpdate = async (id) => {
+    const newName = prompt("Enter new name:");
+    const newValue = prompt("Enter new value:");
+    if (!newName || !newValue) {
+      alert("Fill all fields");
+      return;
+    }
+
+
+    try {
+      await fetch(`${API_URL}/api/data/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: newName, value: Number(newValue) })
+      });
+
+      fetchData(); // refresh list
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
   return (
     <div className="container">
       <h1>MERN Deployment Practice 🚀</h1>
@@ -93,6 +128,8 @@ export default function App() {
           {dataList.map((item) => (
             <li key={item._id}>
               {item.name} - {item.value}
+              <button onClick={() => handleDelete(item._id)}>Delete</button>
+              <button onClick={() => handleUpdate(item._id)}>Update</button>
             </li>
           ))}
         </ul>
