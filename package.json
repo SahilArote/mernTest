@@ -12,6 +12,6 @@
     "preview:frontend": "npm --prefix frontend run preview"
   },
   "devDependencies": {
-    "concurrently": "^9.0.1"
+    "concurrently": "^9.2.1"
   }
 }

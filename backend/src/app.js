@@ -29,7 +29,7 @@ app.get('/api/hello', async (req, res) => {
     const data = await Data.find();
 
     res.json({
-      message: `Hello from backend 🚀  this is ${data.length > 0 ? data[0].name : 'No data'}`,
+      message: `Hello from backend 🚀}`,
       data: data
     });
 
