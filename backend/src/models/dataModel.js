@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 const DataSchema = new mongoose.Schema({
   name: String,
   value: Number,
-});
+}, { timestamps: true });
 
-export default mongoose.model('Data', DataSchema);
+const Data = mongoose.model('Data', DataSchema);
+
+export default Data;
