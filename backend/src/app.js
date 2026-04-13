@@ -38,15 +38,16 @@ app.get('/api/hello', async (req, res) => {
   }
 });
 
-// Create data
 app.post('/api/data', async (req, res) => {
   try {
+    const { name, value } = req.body;
+
     const data = await Data.create({
-      name: "Sahil",
-      value: 100
+      name,
+      value
     });
 
-    res.json(data);
+    res.status(201).json(data);
 
   } catch (err) {
     res.status(500).json({ error: err.message });
